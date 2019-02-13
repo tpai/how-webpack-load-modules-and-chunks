@@ -69,4 +69,4 @@ __webpack_require__('module_a');
 __webpack_require__('module_c');
     `);
   }),
-}, [['entry_point', 'vendor', 'runtime']]]);
+}, [['entry_point', 'vendor']]]);
