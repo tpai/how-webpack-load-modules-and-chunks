@@ -1,3 +1,9 @@
+/* window['myJsonp'].push([
+ *   [chunkId],
+ *   {...moreModules},
+ *   [executeModule, ...deferredModules]
+ * ])
+ */
 (window["myJsonp"] = window["myJsonp"] || []).push([['app'], {
   module_a: (function(module, __webpack_exports__, __webpack_require__) {
     eval(`
@@ -12,6 +18,13 @@ vendor_c__IMPORTED_MODULE__(vendor_b__IMPORTED_MODULE__['b_1']);
     `);
   }),
   module_b: (function(module, __webpack_exports__, __webpack_require__) {
+    /* var map = {
+     *   reqModuleId: [
+     *     moduleId,
+     *     ...chunkIds,
+     *   ],
+     * };
+     */
     eval(`
 var map = {
   "./dynamic_load": [
