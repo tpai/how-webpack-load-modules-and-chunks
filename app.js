@@ -20,9 +20,24 @@ var map = {
   ],
 };
 
-function webpackAsyncContext(e){var r=map[e];return r?Promise.all(r.slice(1).map(__webpack_require__.e)).then(function(){var e=r[0];return __webpack_require__(e)}):Promise.resolve().then(function(){var r=new Error("Cannot find module '"+e+"'");throw r.code="MODULE_NOT_FOUND",r})}
-webpackAsyncContext.keys = function webpackAsyncContextKeys() { return Object.keys(map); }
-webpackAsyncContext.id = "c";
+function webpackAsyncContext(req) {
+  var ids = map[req];
+  if (!ids) {
+    return Promise.resolve().then(function() {
+      var e = new Error("Cannot find module '" + req + "'");
+      e.code = 'MODULE_NOT_FOUND';
+      throw e;
+    });
+  }
+  return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
+    var id = ids[0];
+    return __webpack_require__(id);
+  });
+}
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+  return Object.keys(map);
+};
+webpackAsyncContext.id = "b";
 module.exports = webpackAsyncContext;
     `);
   }),
@@ -41,4 +56,4 @@ __webpack_require__('module_a');
 __webpack_require__('module_c');
     `);
   }),
-}, [['entry_point', 'runtime', 'vendor']]]);
+}, [['entry_point', 'vendor', 'runtime']]]);
